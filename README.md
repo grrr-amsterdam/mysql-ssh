@@ -1,5 +1,7 @@
 # MySQL SSH
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/grrr-amsterdam/mysql-ssh.svg)](https://greenkeeper.io/)
+
 Sets up a MySQL connection inside an SSH tunnel.
 This is practical when you want to reach a database which is only accessible through a webserver.
 Even if the database server is not located on the webserver itself.
