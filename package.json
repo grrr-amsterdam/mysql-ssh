@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "coffeescript": "^1.12.6",
-    "fs": "^0.0.1-security",
     "mysql2": "^1.2.0",
     "ssh2": "^0.5.4"
   },

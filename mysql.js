@@ -4,7 +4,6 @@
  */
 
 const mysql     = require('mysql2')
-const fs        = require('fs')
 const Client    = require('ssh2').Client;
 
 var tunnel = module.exports = {
