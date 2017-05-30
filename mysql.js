@@ -9,7 +9,15 @@ const Client    = require('ssh2').Client;
 
 var tunnel = module.exports = {
 
+    /**
+     * @var ssh2.Connection _conn The SSH connection
+     */
     _conn: null,
+
+    /**
+     * @var mysql2.Connection _conn The MySQL connection
+     */
+    _sql: null,
 
     /**
      * @param obj sshConfig SSH Configuration as defined by ssh2 package
@@ -28,7 +36,7 @@ var tunnel = module.exports = {
                     dbConfig.port,
                     function (err, stream) {
                         if (err) {
-                            tunnel._conn.end()
+                            tunnel.close()
                             var msg = err.reason == 'CONNECT_FAILED'
                                 ? 'Connection failed.'
                                 : err
@@ -39,8 +47,8 @@ var tunnel = module.exports = {
                         dbConfig.host = 'localhost'
                         dbConfig.stream = stream
 
-                        var sql = mysql.createConnection(dbConfig)
-                        resolve(sql)
+                        tunnel._sql = mysql.createConnection(dbConfig)
+                        resolve(tunnel._sql)
                     }
                 )
             }).connect(sshConfig)
@@ -48,6 +56,10 @@ var tunnel = module.exports = {
     },
 
     close: function() {
+        if ('end' in tunnel._sql) {
+            tunnel._sql.end(function(err) {})
+        }
+
         if ('end' in tunnel._conn) {
             tunnel._conn.end()
         }
