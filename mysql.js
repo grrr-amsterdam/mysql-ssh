@@ -40,7 +40,7 @@ var tunnel = module.exports = {
                             var msg = err.reason == 'CONNECT_FAILED'
                                 ? 'Connection failed.'
                                 : err
-                            return reject(err)
+                            return reject(msg)
                         }
 
                         // override db host, since we're operating from within the SSH tunnel
