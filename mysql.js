@@ -24,6 +24,12 @@ var tunnel = module.exports = {
      * @return Promise <mysql2 connection>
      */
     connect: function(sshConfig, dbConfig) {
+        if (typeof dbConfig === 'undefined') {
+            throw new Error('database configuration is missing');
+        }
+        if (typeof sshConfig === 'undefined') {
+            throw new Error('ssh configuration is missing');
+        }
         dbConfig = tunnel._addDefaults(dbConfig)
         return new Promise(function(resolve, reject) {
             tunnel._conn = new Client();
