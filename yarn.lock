@@ -133,19 +133,21 @@ sqlstring@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/sqlstring/-/sqlstring-2.2.0.tgz#c3135c4ea8abcd7e7ee741a4966a891d86a4f191"
 
-ssh2-streams@~0.1.15:
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/ssh2-streams/-/ssh2-streams-0.1.16.tgz#ac9d3ce9e062f8cf08fcce5b3a274b6d5cecdc54"
+ssh2-streams@~0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ssh2-streams/-/ssh2-streams-0.2.1.tgz#9c9c9964be60e9644575af328677f64b1e5cbd79"
+  integrity sha512-3zCOsmunh1JWgPshfhKmBCL3lUtHPoh+a/cyQ49Ft0Q0aF7xgN06b76L+oKtFi0fgO57FLjFztb1GlJcEZ4a3Q==
   dependencies:
     asn1 "~0.2.0"
     semver "^5.1.0"
     streamsearch "~0.1.2"
 
-ssh2@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/ssh2/-/ssh2-0.5.4.tgz#1bf6b6b28c96eaef267f4d6c46a5a2517a599e27"
+ssh2@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/ssh2/-/ssh2-0.6.2.tgz#b065d6e2133a2d4b557447d613b3511cb15e3a2e"
+  integrity sha512-DJ+dOhXEEsmNpcQTI0x69FS++JH6qqL/ltEHf01pI1SSLMAcmD+hL4jRwvHjPwynPsmSUbHJ/WIZYzROfqZWjA==
   dependencies:
-    ssh2-streams "~0.1.15"
+    ssh2-streams "~0.2.0"
 
 streamsearch@~0.1.2:
   version "0.1.2"
