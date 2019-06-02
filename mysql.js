@@ -53,7 +53,36 @@ var tunnel = module.exports = {
             }).connect(sshConfig)
         })
     },
+    createPool: function(sshConfig, dbConfig) {
+        dbConfig = tunnel._addDefaults(dbConfig)
+        return new Promise(function(resolve, reject) {
+            tunnel._conn = new Client();
+            tunnel._conn.on('ready', function() {
+                tunnel._conn.forwardOut(
+                    '127.0.0.1',
+                    12345,
+                    dbConfig.host,
+                    dbConfig.port,
+                    function (err, stream) {
+                        if (err) {
+                            tunnel.close()
+                            var msg = err.reason == 'CONNECT_FAILED'
+                                ? 'Connection failed.'
+                                : err
+                            return reject(msg)
+                        }
 
+                        // override db host, since we're operating from within the SSH tunnel
+                        dbConfig.host = 'localhost'
+                        dbConfig.stream = stream
+
+                        tunnel._sql = mysql.createPool(dbConfig)
+                        resolve(tunnel._sql)
+                    }
+                )
+            }).connect(sshConfig)
+        })
+    },
     close: function() {
         if ('end' in tunnel._sql) {
             tunnel._sql.end(function(err) {})
