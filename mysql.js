@@ -3,8 +3,8 @@
  * @author David Spreekmeester <david@grrr.nl>
  */
 
-const mysql     = require('mysql2')
-const Client    = require('ssh2').Client;
+const mysql = require('mysql2')
+const Client = require('ssh2').Client;
 
 var tunnel = module.exports = {
 
@@ -23,11 +23,11 @@ var tunnel = module.exports = {
      * @param obj dbConfig MySQL Configuration as defined by mysql(2) package
      * @return Promise <mysql2 connection>
      */
-    connect: function(sshConfig, dbConfig) {
+    connect: function (sshConfig, dbConfig) {
         dbConfig = tunnel._addDefaults(dbConfig)
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             tunnel._conn = new Client();
-            tunnel._conn.on('ready', function() {
+            tunnel._conn.on('ready', function () {
                 tunnel._conn.forwardOut(
                     '127.0.0.1',
                     12345,
@@ -54,12 +54,12 @@ var tunnel = module.exports = {
         })
     },
 
-    close: function() {
-        if ('end' in tunnel._sql) {
-            tunnel._sql.end(function(err) {})
+    close: function () {
+        if (tunnel._sql && 'end' in tunnel._sql) {
+            tunnel._sql.end(function (err) { })
         }
 
-        if ('end' in tunnel._conn) {
+        if (tunnel._conn && 'end' in tunnel._conn) {
             tunnel._conn.end()
         }
     },
