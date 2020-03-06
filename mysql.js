@@ -54,15 +54,25 @@ var tunnel = module.exports = {
         })
     },
 
-    close: function () {
-        if (tunnel._sql && 'end' in tunnel._sql) {
-            tunnel._sql.end(function (err) { })
-        }
+  close: function () {
+    try {
+      if ('end' in tunnel._sql) {
+        tunnel._sql.end(function (err) {
+          if (err) { throw new Error(err); }
+        })
+      }
+    } catch (error) {
+      console.log(`error closing mysql connection: ${error.message}`);
+    }
 
-        if (tunnel._conn && 'end' in tunnel._conn) {
-            tunnel._conn.end()
-        }
-    },
+    try {
+      if ('end' in tunnel._conn) {
+        tunnel._conn.end()
+      }
+    } catch (error) {
+      console.log(`error closing ssh connection: ${error.message}`);
+    }
+  },
 
     _addDefaults(dbConfig) {
         if (!('port' in dbConfig)) {
