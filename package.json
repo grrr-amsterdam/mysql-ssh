@@ -3,8 +3,8 @@
     "mysql2": "^1.2.0",
     "ssh2": "^0.5.4"
   },
-  "name": "mysql-ssh",
-  "version": "1.0.6",
+  "name": "mysql2-ssh",
+  "version": "1.0.7",
   "description": "Execute mysql commands over an ssh tunnel.",
   "main": "mysql.js",
   "devDependencies": {},
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grrr-amsterdam/mysql-ssh.git"
+    "url": "git+https://github.com/Engelswoord/mysql2-ssh.git"
   },
   "keywords": [
     "mysql",
@@ -23,8 +23,5 @@
   ],
   "author": "David Spreekmeester <david@grrr.nl>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/grrr-amsterdam/mysql-ssh/issues"
-  },
-  "homepage": "https://github.com/grrr-amsterdam/mysql-ssh#readme"
+  "homepage": "https://github.com/Engelswoord/mysql2-ssh"
 }
