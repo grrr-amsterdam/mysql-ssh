@@ -47,7 +47,6 @@ var tunnel = module.exports = {
                         dbConfig.stream = stream
 
                         tunnel._sql = mysql.createConnection(dbConfig)
-                        console.log(tunnel._sql)
                         resolve(tunnel._sql)
                     }
                 )
