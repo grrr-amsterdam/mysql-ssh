@@ -1,9 +1,10 @@
 /**
  * @author David Spreekmeester <david@grrr.nl>
  * Modified by Peter Schilleman <peter@eenengelswoord.nl>
+ * to provide support for async/await
  */
 
-const mysql = require('mysql2')
+const mysql = require('mysql2/promise')
 const Client = require('ssh2').Client;
 
 var tunnel = module.exports = {
