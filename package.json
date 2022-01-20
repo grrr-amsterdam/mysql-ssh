@@ -4,7 +4,7 @@
     "ssh2": "^0.5.4"
   },
   "name": "mysql2-ssh",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Execute mysql commands over an ssh tunnel.",
   "main": "mysql.js",
   "devDependencies": {},

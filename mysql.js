@@ -28,6 +28,7 @@ var tunnel = module.exports = {
         dbConfig = tunnel._addDefaults(dbConfig)
         return new Promise(function (resolve, reject) {
             tunnel._conn = new Client();
+            tunnel._conn.on('error', reject);
             tunnel._conn.on('ready', function () {
                 tunnel._conn.forwardOut(
                     '127.0.0.1',
@@ -46,7 +47,6 @@ var tunnel = module.exports = {
                         // override db host, since we're operating from within the SSH tunnel
                         dbConfig.host = '127.0.0.1'
                         dbConfig.stream = stream
-
                         tunnel._sql = mysql.createConnection(dbConfig)
                         resolve(tunnel._sql)
                     }
