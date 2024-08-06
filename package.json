@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "mysql2": "^1.2.0",
-    "ssh2": "^0.5.4"
+    "mysql2": "^3.11.0",
+    "ssh2": "^1.15.0"
   },
   "name": "mysql-ssh",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Execute mysql commands over an ssh tunnel.",
   "main": "mysql.js",
   "devDependencies": {},
